@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2026 at 03:41 PM
+-- Generation Time: Mar 26, 2026 at 07:26 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -33,7 +33,7 @@ CREATE TABLE `customers` (
   `lastName` varchar(50) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `password` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -46,7 +46,8 @@ INSERT INTO `customers` (`customer_id`, `firstName`, `lastName`, `phone`, `usern
 (3, 'John', 'Doe', '0991122334', 'johnd', 'securepwd'),
 (4, 'อุดร', 'ใจดำ', '0992345678', 'udoni', 'pass123456'),
 (5, 'วิภร', 'สุขดี', '0778765432', 'wiporn', 'wiporn2025'),
-(6, 'joe', 'boy', '0799122334', 'joelnw', '123456');
+(6, 'joe', 'boy', '0799122334', 'joelnw', '123456'),
+(7, 'ฟหกไฟ', 'หกไฟหก', '15465', 'sdfse', '123456');
 
 -- --------------------------------------------------------
 
@@ -55,13 +56,25 @@ INSERT INTO `customers` (`customer_id`, `firstName`, `lastName`, `phone`, `usern
 --
 
 CREATE TABLE `employees` (
-  `emp_id` varchar(10) NOT NULL,
+  `emp_id` int(10) NOT NULL,
   `full_name` varchar(100) NOT NULL,
   `department` varchar(50) NOT NULL,
   `salary` decimal(10,2) NOT NULL,
   `active` tinyint(1) DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`emp_id`, `full_name`, `department`, `salary`, `active`, `created_at`) VALUES
+(5, 'สมชาย ใจดี', 'IT', '35000.00', 1, '2026-03-26 03:35:33'),
+(6, 'สมหญิง ดีงาม', 'บัญชี', '28000.00', 1, '2026-03-26 03:35:33'),
+(7, 'อนันต์ สุขใจ', 'การตลาด', '25000.00', 0, '2026-03-26 03:35:33'),
+(8, 'สุดา พรมดี', 'ทรัพยากรบุคคล', '32000.00', 1, '2026-03-26 03:35:33'),
+(9, 'asdwad', 'บัญชี', '163456.00', 1, '2026-03-26 05:20:45'),
+(10, 'asdwa', 'คอมพิวเตอร์', '465456.00', 1, '2026-03-26 06:24:26');
 
 --
 -- Indexes for dumped tables
@@ -87,7 +100,13 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `employees`
+--
+ALTER TABLE `employees`
+  MODIFY `emp_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
